@@ -3,3 +3,46 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.navbar {
+  display: flex;
+  background-color: rgba(113, 31, 141, 1);
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  color: #fff;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-left img {
+  width: 40px;
+}
+
+.main-container {
+  text-align: center;
+}
+
+input {
+  width: 250px;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
+.get-btn button {
+  width: 530px;
+  padding: 1rem;
+  background-color: rgba(113, 31, 141, 1);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.img-holder img {
+  margin-top: 2rem;
+  width: 530px;
+}
