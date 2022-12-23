@@ -46,3 +46,26 @@ input {
   margin-top: 2rem;
   width: 530px;
 }
+.img-holder {
+  position: relative;
+  text-align: center;
+}
+
+.img-text-1 {
+  position: absolute;
+  top: 10%;
+  right: 45%;
+  font-size: 50px;
+  color: rgba(113, 31, 141, 1);
+}
+.img-text-2 {
+  position: absolute;
+  right: 45%;
+  top: 80%;
+  font-size: 50px;
+  color: rgba(113, 31, 141, 1);
+}
+
+.state--value h1 {
+  cursor: pointer;
+}
