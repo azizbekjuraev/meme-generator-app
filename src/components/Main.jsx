@@ -3,13 +3,23 @@ import memeData from "../memeData";
 
 export default function () {
   const [isGoingOut, setGoingOut] = useState(true);
-  const [memeImage, setMemeImage] = useState("");
-  const [thingsArr, setThingsArr] = useState("Thing1");
+  // const [memeImage, setMemeImage] = useState("");
+  const [content, setContent] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "./img/memeimg.png",
+  });
+
+  const [allMemes, setAllMemes] = useState(memeData);
+
   function getMemeImage() {
-    const memesArray = memeData.data.memes;
+    const memesArray = allMemes.data.memes;
     const randomNumber = Math.floor(Math.random() * memesArray.length);
-    setMemeImage(memesArray[randomNumber].url);
-    console.log(memeImage);
+    const url = memesArray[randomNumber].url;
+    setAllMemes((prevMeme) => ({
+      ...prevMeme,
+      randomImage: url,
+    }));
   }
 
   return (
@@ -22,7 +32,7 @@ export default function () {
         <button onClick={getMemeImage}>Get a new meme image 🌠</button>
       </div>
       <div className="img-holder">
-        <img src={memeImage} />
+        <img src={allMemes.randomImage} />
         <p className="img-text-1">I work</p>
         <p className="img-text-2">hard!</p>
       </div>
