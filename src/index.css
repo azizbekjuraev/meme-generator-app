@@ -110,3 +110,23 @@ input {
   padding: 0.4rem 2rem;
   cursor: pointer;
 }
+
+@media (max-width: 645px) {
+  .form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .navbar {
+    display: block;
+    text-align: center;
+  }
+  body {
+    min-width: 366px;
+  }
+  .nav-left {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

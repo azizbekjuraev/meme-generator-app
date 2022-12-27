@@ -52,6 +52,7 @@ export default function () {
       downloadjs(dataURL, "meme.png", "image/png");
     }
   };
+
   return (
     <div className="main-container">
       <div className="form">
@@ -81,11 +82,7 @@ export default function () {
       <div ref={editorRef} className="img-holder">
         <img src={allMemes.randomImage} />
         <div className="text-content">
-          <p
-            className={cx("img-text", {
-              "color-white": !isColorBlack,
-            })}
-          >
+          <p className={cx("img-text", { "color-white": !isColorBlack })}>
             {val}
           </p>
           <p
@@ -97,7 +94,7 @@ export default function () {
           </p>
         </div>
         <div className="aj">
-          <p>built by ©️AZIZBEKJURAEV</p>
+          <p>All rights reserved ©️/AZIZBEKJURAEV/2022</p>
           <p>https://meme-generator-app-ecru.vercel.app/</p>
         </div>
       </div>

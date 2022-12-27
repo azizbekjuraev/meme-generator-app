@@ -6,7 +6,7 @@ export default function () {
         <h1>MemeGenerator</h1>
       </div>
       <div className="nav-right">
-        <p>React Exercises</p>
+        <p>BY AZIZBEKJURAEV</p>
       </div>
     </div>
   );
