@@ -96,6 +96,10 @@ export default function () {
             {val2}
           </p>
         </div>
+        <div className="aj">
+          <p>built by ©️AZIZBEKJURAEV</p>
+          <p>https://meme-generator-app-ecru.vercel.app/</p>
+        </div>
       </div>
     </div>
   );

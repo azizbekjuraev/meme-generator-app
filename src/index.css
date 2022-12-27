@@ -87,6 +87,7 @@ input {
 }
 
 .img-text {
+  margin-bottom: 2rem;
   font-size: 50px;
   color: #000;
   word-break: break-all;
