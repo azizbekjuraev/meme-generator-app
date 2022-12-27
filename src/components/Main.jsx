@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import memeData from "../memeData";
 import cx from "classnames";
+import html2canvas from "html2canvas";
+import downloadjs from "downloadjs";
 
 export default function () {
   const [content, setContent] = useState({
@@ -10,6 +12,8 @@ export default function () {
   });
 
   const [allMemes, setAllMemes] = useState(memeData);
+
+  const editorRef = useRef(null);
 
   function getMemeImage() {
     const memesArray = allMemes.data.memes;
@@ -37,6 +41,17 @@ export default function () {
     setIsColorBlack((prev) => !prev);
   }
 
+  const handleCaptureClick = async () => {
+    if (editorRef.current) {
+      const canvas = await html2canvas(editorRef.current, {
+        logging: true,
+        letterRendering: 1,
+        useCORS: true,
+      });
+      const dataURL = canvas.toDataURL("image/png");
+      downloadjs(dataURL, "meme.png", "image/png");
+    }
+  };
   return (
     <div className="main-container">
       <div className="form">
@@ -59,26 +74,28 @@ export default function () {
       </div>
       <div className="get-btn">
         <button onClick={getMemeImage}>Get a new meme image 🌠</button>
-        <a href={allMemes.randomImage} download>
+        <a href="#" onClick={handleCaptureClick}>
           ⬇️
         </a>
       </div>
-      <div className="img-holder">
+      <div ref={editorRef} className="img-holder">
         <img src={allMemes.randomImage} />
-        <p
-          className={cx("img-text-1", {
-            "color-white": !isColorBlack,
-          })}
-        >
-          {val}
-        </p>
-        <p
-          className={cx("img-text-2", {
-            "color-white": !isColorBlack,
-          })}
-        >
-          {val2}
-        </p>
+        <div className="text-content">
+          <p
+            className={cx("img-text", {
+              "color-white": !isColorBlack,
+            })}
+          >
+            {val}
+          </p>
+          <p
+            className={cx("img-text", {
+              "color-white": !isColorBlack,
+            })}
+          >
+            {val2}
+          </p>
+        </div>
       </div>
     </div>
   );
