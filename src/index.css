@@ -28,11 +28,29 @@
 }
 
 input {
-  width: 250px;
+  width: 290px;
   padding: 0.5rem;
   margin: 1rem;
+  border-radius: 0.9rem;
+  border: 1px solid grey;
+}
+.input-color {
+  border-radius: 1rem;
+  background-color: rgba(113, 31, 141, 1);
+  width: 20px;
+  height: 20px;
+  padding: 1rem;
+  border: none;
 }
 
+.get-btn a {
+  font-size: 45px;
+}
+.get-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .get-btn button {
   width: 530px;
   padding: 1rem;
@@ -40,6 +58,9 @@ input {
   border: none;
   color: #fff;
   cursor: pointer;
+  margin: 1rem;
+  justify-content: center;
+  border-radius: 2rem;
 }
 
 .img-holder img {
@@ -56,16 +77,31 @@ input {
   top: 10%;
   right: 45%;
   font-size: 50px;
-  color: rgba(113, 31, 141, 1);
+  color: #000;
+  text-align: center;
 }
 .img-text-2 {
   position: absolute;
   right: 45%;
   top: 80%;
   font-size: 50px;
-  color: rgba(113, 31, 141, 1);
+  color: #000;
+  text-align: center;
 }
 
 .state--value h1 {
+  cursor: pointer;
+}
+
+.color-white {
+  color: #fff;
+}
+
+.color-change button {
+  background-color: rgba(113, 31, 141, 1);
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.4rem 2rem;
   cursor: pointer;
 }
