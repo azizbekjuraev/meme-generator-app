@@ -11,6 +11,12 @@ export default function () {
     randomImage: "./img/memeimg.png",
   });
 
+  const change = (event) => {
+    setContent((prevContent) => {
+      return { ...prevContent, [event.target.name]: event.target.value };
+    });
+  };
+
   const [allMemes, setAllMemes] = useState(memeData);
 
   const editorRef = useRef(null);
@@ -24,16 +30,6 @@ export default function () {
       randomImage: url,
     }));
   }
-  // Value from texts in input field
-  const [val, setValue] = useState("");
-  const change = (event) => {
-    setValue(event.target.value);
-  };
-
-  const [val2, setValue2] = useState("");
-  const change2 = (event) => {
-    setValue2(event.target.value);
-  };
 
   const [isColorBlack, setIsColorBlack] = useState(true);
 
@@ -60,13 +56,15 @@ export default function () {
           type="text"
           className="input1-el"
           placeholder="Top text"
+          name="topText"
           onChange={change}
         />
         <input
           type="text"
           className="input2-el"
           placeholder="Buttom text"
-          onChange={change2}
+          name="bottomText"
+          onChange={change}
         />
         <input type="color" className="input-color" />
         <div className="color-change">
@@ -83,14 +81,14 @@ export default function () {
         <img src={allMemes.randomImage} />
         <div className="text-content">
           <p className={cx("img-text", { "color-white": !isColorBlack })}>
-            {val}
+            {content.topText}
           </p>
           <p
             className={cx("img-text", {
               "color-white": !isColorBlack,
             })}
           >
-            {val2}
+            {content.bottomText}
           </p>
         </div>
         <div className="aj">
