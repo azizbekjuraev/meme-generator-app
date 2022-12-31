@@ -1,5 +1,4 @@
-import React, { useState, useRef } from "react";
-import memeData from "../memeData";
+import React, { useState, useRef, useEffect } from "react";
 import cx from "classnames";
 import html2canvas from "html2canvas";
 import downloadjs from "downloadjs";
@@ -8,24 +7,31 @@ export default function () {
   const [content, setContent] = useState({
     topText: "",
     bottomText: "",
-    randomImage: "./img/memeimg.png",
+    randomImage: "http://i.imgflip.com/1bij.jpg",
   });
 
   const change = (event) => {
+    const { name, value } = event.target;
     setContent((prevContent) => {
-      return { ...prevContent, [event.target.name]: event.target.value };
+      return { ...prevContent, [name]: value };
     });
   };
 
-  const [allMemes, setAllMemes] = useState(memeData);
+  const [allMemes, setAllMemes] = useState([]);
 
   const editorRef = useRef(null);
 
+  React.useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => setAllMemes(data.data.memes));
+  }, []);
+
+  //Mashey ozgarsa kerak
   function getMemeImage() {
-    const memesArray = allMemes.data.memes;
-    const randomNumber = Math.floor(Math.random() * memesArray.length);
-    const url = memesArray[randomNumber].url;
-    setAllMemes((prevMeme) => ({
+    const randomNumber = Math.floor(Math.random() * allMemes.length);
+    const url = allMemes[randomNumber].url;
+    setContent((prevMeme) => ({
       ...prevMeme,
       randomImage: url,
     }));
@@ -58,6 +64,8 @@ export default function () {
           placeholder="Top text"
           name="topText"
           onChange={change}
+          //controlled component
+          value={content.topText}
         />
         <input
           type="text"
@@ -65,6 +73,8 @@ export default function () {
           placeholder="Buttom text"
           name="bottomText"
           onChange={change}
+          //controlled component
+          value={content.bottomText}
         />
         <input type="color" className="input-color" />
         <div className="color-change">
@@ -78,18 +88,18 @@ export default function () {
         </a>
       </div>
       <div ref={editorRef} className="img-holder">
-        <img src={allMemes.randomImage} />
+        <img src={content.randomImage} />
         <div className="text-content">
-          <p className={cx("img-text", { "color-white": !isColorBlack })}>
+          <h1 className={cx("img-text", { "color-white": !isColorBlack })}>
             {content.topText}
-          </p>
-          <p
+          </h1>
+          <h1
             className={cx("img-text", {
               "color-white": !isColorBlack,
             })}
           >
             {content.bottomText}
-          </p>
+          </h1>
         </div>
         <div className="aj">
           <p>All rights reserved ©️/AZIZBEKJURAEV/2022</p>
