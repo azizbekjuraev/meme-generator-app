@@ -37,7 +37,7 @@ export default function () {
     }));
   }
 
-  const [isColorBlack, setIsColorBlack] = useState(true);
+  const [isColorBlack, setIsColorBlack] = useState(false);
 
   function colorChanger() {
     setIsColorBlack((prev) => !prev);
