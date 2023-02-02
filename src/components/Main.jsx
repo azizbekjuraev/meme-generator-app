@@ -101,10 +101,6 @@ export default function () {
             {content.bottomText}
           </h1>
         </div>
-        <div className="aj">
-          <p>All rights reserved ©️/AZIZBEKJURAEV/2022</p>
-          <p>https://meme-generator-app-ecru.vercel.app/</p>
-        </div>
       </div>
     </div>
   );
